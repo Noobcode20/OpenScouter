@@ -1,0 +1,1866 @@
+{
+  "benchmark": {
+    "id": "opencode-free-2026-10-26",
+    "version": "1.0",
+    "provider": "OpenCode",
+    "createdAt": "2026-10-26T00:00:00.000Z",
+    "tests": [
+      "Implementation and edge cases",
+      "Reasoning and instruction retention",
+      "Security review and tool use"
+    ],
+    "scoringNote": "Single run per catalog entry. Token Efficiency is a response-length proxy because provider token telemetry was unavailable. Error Recovery is not directly exercised unless an agent corrected a failed test. Higher Hallucination Rate score means fewer observed hallucinations.",
+    "modelCounts": {
+      "success": 14,
+      "failed": 7,
+      "incomplete": 2
+    }
+  },
+  "models": [
+    {
+      "id": "opencode/beam-free",
+      "name": "Beam Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 43296,
+      "overall": 4.6,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 19; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 5,
+          "evidence": "43 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "19 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "19 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 43.296,
+      "responseChars": 2740
+    },
+    {
+      "id": "opencode/deepseek-v4.1-flash-free",
+      "name": "DeepSeek V4.1 Flash Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 263098,
+      "overall": 4.4,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 12; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 3.5,
+          "evidence": "263 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 2,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "12 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "12 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 263.098,
+      "responseChars": 8227
+    },
+    {
+      "id": "openrouter/recursive/flint-v1.0:free",
+      "name": "Flint (free)",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 149242,
+      "overall": 4.6,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported passing; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 4.5,
+          "evidence": "149 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Implementation checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 149.242,
+      "responseChars": 3008
+    },
+    {
+      "id": "opencode/flint-40b-free",
+      "name": "Flint 40B Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 392801,
+      "overall": 4.4,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported passing; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 2.5,
+          "evidence": "393 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Implementation checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 392.801,
+      "responseChars": 3745
+    },
+    {
+      "id": "openrouter/google/gemma-4-26b-a4b-it:free",
+      "name": "Gemma 4 26B A4B  (free)",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Upstream model endpoint was rate-limited; no benchmark answer was returned.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "[Google AI Studio] google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations"
+      ],
+      "bestFor": [],
+      "availabilityNote": "[Google AI Studio] google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+      "categories": [],
+      "areaScores": {}
+    },
+    {
+      "id": "openrouter/google/gemma-4-31b-it:free",
+      "name": "Gemma 4 31B (free)",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Upstream model endpoint was rate-limited; no benchmark answer was returned.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "[Google AI Studio] google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations"
+      ],
+      "bestFor": [],
+      "availabilityNote": "[Google AI Studio] google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+      "categories": [],
+      "areaScores": {}
+    },
+    {
+      "id": "opencode/glm-5.3-flash-free",
+      "name": "GLM-5.3-Flash Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 261868,
+      "overall": 4.5,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 24; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 3.5,
+          "evidence": "262 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 2.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 4.5,
+          "evidence": "Corrected an erroneous test expectation or harness issue"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "24 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "24 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recovered from a test expectation or harness mistake",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4.65,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 261.868,
+      "responseChars": 6276
+    },
+    {
+      "id": "openrouter/thinkingmachines/inkling:free",
+      "name": "Inkling (free)",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 134103,
+      "overall": 4.6,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 10; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 4.5,
+          "evidence": "134 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 4,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "10 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "10 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 134.103,
+      "responseChars": 1330
+    },
+    {
+      "id": "openrouter/thinkingmachines/inkling-small:free",
+      "name": "Inkling Small (free)",
+      "provider": "OpenCode",
+      "status": "incomplete",
+      "latencyMs": 78543,
+      "overall": 3.1,
+      "scores": {
+        "Accuracy": {
+          "score": 2.2,
+          "evidence": "Implementation checks reported passing; math incorrect or unverified; security 0/4."
+        },
+        "Task Completion": {
+          "score": 2,
+          "evidence": "1/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 5,
+          "evidence": "79 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 4.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 3,
+          "evidence": "Task returned partial or unverified completion; single run"
+        },
+        "Instruction Following": {
+          "score": 2,
+          "evidence": "Required response markers not fully evidenced"
+        },
+        "Reasoning Quality": {
+          "score": 3,
+          "evidence": "Math or security reasoning contains a gap"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 2,
+          "evidence": "Recovery not demonstrated"
+        },
+        "Security": {
+          "score": 2,
+          "evidence": "0/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 2,
+          "evidence": "1/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 2,
+          "evidence": "Context marker evidence incomplete"
+        },
+        "Hallucination Rate": {
+          "score": 2,
+          "evidence": "Incorrect or missing numerical result in the reasoning task"
+        },
+        "Consistency": {
+          "score": 3,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Partial evidence: 1/3 sections complete. Math answer incorrect or unverified. Security/tool section incomplete.",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Correct final math result was not evidenced",
+        "Security review covered 0/4 required risk classes",
+        "Error recovery was not directly exercised",
+        "Only partial benchmark evidence; overall fit remains provisional"
+      ],
+      "bestFor": [],
+      "categories": [],
+      "areaScores": {
+        "Coding": 3.5,
+        "Debugging": 3.4,
+        "Code review": 2.1,
+        "Refactoring": 4.8,
+        "Mathematics": 1,
+        "Instruction following": 2,
+        "Tool use": 4.5,
+        "Security": 2,
+        "Reasoning & logic": 3
+      },
+      "availabilityNote": "",
+      "runSeconds": 78.543,
+      "responseChars": 568
+    },
+    {
+      "id": "openrouter/liquid/lfm-2.5-2.6b:free",
+      "name": "LFM2.5-2.6B (free)",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Provider rejected the request before the benchmark ran.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "[Liquid] JSON Schema nesting cannot exceed 10 levels."
+      ],
+      "bestFor": [],
+      "availabilityNote": "[Liquid] JSON Schema nesting cannot exceed 10 levels.",
+      "categories": [],
+      "areaScores": {}
+    },
+    {
+      "id": "opencode/mimo-v2.6-flash-free",
+      "name": "MiMo-V2.6-Flash Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 198726,
+      "overall": 4.4,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 23; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 4,
+          "evidence": "199 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 2,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "23 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "23 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 198.726,
+      "responseChars": 9265
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "name": "Nemotron 3 Nano Omni (free)",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 230007,
+      "overall": 3.4,
+      "scores": {
+        "Accuracy": {
+          "score": 3.2,
+          "evidence": "9/9 implementation checks and full security review; math answer was $6480."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "All three test sections returned; the math answer is scored separately"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 3.5,
+          "evidence": "230 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 4.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.2,
+          "evidence": "Completed all sections in one attempt; single run"
+        },
+        "Instruction Following": {
+          "score": 3,
+          "evidence": "Required markers present, but final price was incorrect."
+        },
+        "Reasoning Quality": {
+          "score": 1.5,
+          "evidence": "Arithmetic result $6480 is incorrect; expected $64.80."
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 2,
+          "evidence": "Recovery not demonstrated"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "Four requested risks identified with mitigations"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "All three requested test sections returned"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Ran the benchmark without parent assistance."
+        },
+        "Context Retention": {
+          "score": 2,
+          "evidence": "Context marker evidence incomplete"
+        },
+        "Hallucination Rate": {
+          "score": 0,
+          "evidence": "Returned a materially incorrect numeric result ($6480)."
+        },
+        "Consistency": {
+          "score": 1,
+          "evidence": "Math answer conflicts with the correct discount and tax calculation."
+        }
+      },
+      "summary": "9/9 implementation checks; completed the battery but answered $6480 instead of $64.80.",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Returned $6480 instead of $64.80.",
+        "Error recovery was not directly exercised."
+      ],
+      "bestFor": [
+        "Coding",
+        "Security",
+        "Tool use"
+      ],
+      "categories": [
+        "Coding",
+        "Security",
+        "Tool use"
+      ],
+      "areaScores": {
+        "Coding": 3.9,
+        "Debugging": 3.4,
+        "Code review": 3.25,
+        "Refactoring": 4.8,
+        "Mathematics": 0,
+        "Instruction following": 2,
+        "Tool use": 4.5,
+        "Security": 3.5,
+        "Reasoning & logic": 1.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 230.007,
+      "responseChars": 969
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
+      "name": "Nemotron 3 Super (free)",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Provider could not run the required shell tool; no answer-quality score was possible.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "[Nvidia] Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'sxpm0VR-knE2_K2__i14ZbzmXEludXpJbFGRvrvc08w'"
+      ],
+      "bestFor": [],
+      "availabilityNote": "[Nvidia] Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'sxpm0VR-knE2_K2__i14ZbzmXEludXpJbFGRvrvc08w'",
+      "categories": [],
+      "areaScores": {}
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "name": "Nemotron 3 Ultra (free)",
+      "provider": "OpenCode",
+      "status": "incomplete",
+      "latencyMs": 70211,
+      "overall": 3,
+      "scores": {
+        "Accuracy": {
+          "score": 3.2,
+          "evidence": "Implementation checks reported passing; math incorrect or unverified; security 4/4."
+        },
+        "Task Completion": {
+          "score": 2,
+          "evidence": "2/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.2,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 5,
+          "evidence": "70 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 4,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 3,
+          "evidence": "Task returned partial or unverified completion; single run"
+        },
+        "Instruction Following": {
+          "score": 2,
+          "evidence": "Required response markers not fully evidenced"
+        },
+        "Reasoning Quality": {
+          "score": 3,
+          "evidence": "Math or security reasoning contains a gap"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 2,
+          "evidence": "Recovery not demonstrated"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 2,
+          "evidence": "2/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 2,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 2,
+          "evidence": "Context marker evidence incomplete"
+        },
+        "Hallucination Rate": {
+          "score": 2,
+          "evidence": "Incorrect or missing numerical result in the reasoning task"
+        },
+        "Consistency": {
+          "score": 3,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Partial evidence: 2/3 sections complete. Math answer incorrect or unverified. ",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Correct final math result was not evidenced",
+        "Error recovery was not directly exercised",
+        "Only partial benchmark evidence; overall fit remains provisional"
+      ],
+      "bestFor": [],
+      "categories": [],
+      "areaScores": {
+        "Coding": 3.7,
+        "Debugging": 3.1,
+        "Code review": 3.85,
+        "Refactoring": 4.2,
+        "Mathematics": 1,
+        "Instruction following": 2,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 3
+      },
+      "availabilityNote": "",
+      "runSeconds": 70.211,
+      "responseChars": 2263
+    },
+    {
+      "id": "opencode/nemotron-3-ultra-free",
+      "name": "Nemotron 3 Ultra Free",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Provider reports this model as unavailable.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "Upstream request failed: Model is unavailable."
+      ],
+      "bestFor": [],
+      "availabilityNote": "Upstream request failed: Model is unavailable.",
+      "categories": [],
+      "areaScores": {}
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3.5-content-safety:free",
+      "name": "Nemotron 3.5 Content Safety (free)",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Provider could not run the required shell tool; no answer-quality score was possible.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "No endpoints found that support tool use. Try disabling \"bash\". To learn more about provider routing, visit: https://openrouter.ai/docs/guides/routing/provider-selection"
+      ],
+      "bestFor": [],
+      "availabilityNote": "No endpoints found that support tool use. Try disabling \"bash\". To learn more about provider routing, visit: https://openrouter.ai/docs/guides/routing/provider-selection",
+      "categories": [],
+      "areaScores": {}
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3.5-lightning:free",
+      "name": "Nemotron 3.5 Lightning (free)",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 192625,
+      "overall": 4.5,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 18; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "All three requested test sections returned"
+        },
+        "Code Quality": {
+          "score": 4.2,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 4,
+          "evidence": "193 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "Complete evidence returned in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "Four requested risk areas named and fixes proposed"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "All three requested test sections returned"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Implementation and security checks passed; math correct; all three sections completed.",
+      "strengths": [
+        "18 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Security",
+        "Instruction following"
+      ],
+      "categories": [
+        "Coding",
+        "Security",
+        "Instruction following"
+      ],
+      "areaScores": {
+        "Coding": 4.6,
+        "Debugging": 3.7,
+        "Code review": 4.75,
+        "Refactoring": 4.2,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 192.625,
+      "responseChars": 4263
+    },
+    {
+      "id": "opencode/nemotron-3.5-lightning-free",
+      "name": "Nemotron 3.5 Lightning Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 272881,
+      "overall": 3.7,
+      "scores": {
+        "Accuracy": {
+          "score": 3.2,
+          "evidence": "Implementation checks reported passing; math incorrect or unverified; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "All three requested test sections returned"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 3,
+          "evidence": "273 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 4,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "Complete evidence returned in one run"
+        },
+        "Instruction Following": {
+          "score": 3,
+          "evidence": "Markers present but requested math result was wrong or missing"
+        },
+        "Reasoning Quality": {
+          "score": 3,
+          "evidence": "Math or security reasoning contains a gap"
+        },
+        "Tool Efficiency": {
+          "score": 3,
+          "evidence": "Shell or execution evidence partial"
+        },
+        "Error Recovery": {
+          "score": 2,
+          "evidence": "Recovery not demonstrated"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "Four requested risk areas named and fixes proposed"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "All three requested test sections returned"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 3.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 2,
+          "evidence": "Incorrect or missing numerical result in the reasoning task"
+        },
+        "Consistency": {
+          "score": 3,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Implementation and security checks passed; math correct; all three sections completed.",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Identified all four security risks and fixes"
+      ],
+      "limitations": [
+        "Correct final math result was not evidenced",
+        "Error recovery was not directly exercised",
+        "Only partial benchmark evidence; overall fit remains provisional"
+      ],
+      "bestFor": [
+        "Coding",
+        "Security",
+        "Instruction following"
+      ],
+      "categories": [
+        "Coding",
+        "Security",
+        "Instruction following"
+      ],
+      "areaScores": {
+        "Coding": 4,
+        "Debugging": 3.4,
+        "Code review": 3.85,
+        "Refactoring": 4.8,
+        "Mathematics": 1,
+        "Instruction following": 3,
+        "Tool use": 3,
+        "Security": 4.5,
+        "Reasoning & logic": 3
+      },
+      "availabilityNote": "",
+      "runSeconds": 272.881,
+      "responseChars": 1809
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3.5-super-vl:free",
+      "name": "Nemotron 3.5 Super VL (free)",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 80013,
+      "overall": 4.6,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 32; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 5,
+          "evidence": "80 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "32 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "32 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 80.013,
+      "responseChars": 5192
+    },
+    {
+      "id": "opencode/nemotron-3.5-super-vl-free",
+      "name": "Nemotron 3.5 Super VL Free",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 298702,
+      "overall": 4.4,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported 8; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 3,
+          "evidence": "299 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "8 checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "8 implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 298.702,
+      "responseChars": 5770
+    },
+    {
+      "id": "openrouter/openrouter/free",
+      "name": "Free Models Router",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 209886,
+      "overall": 4.5,
+      "scores": {
+        "Accuracy": {
+          "score": 5,
+          "evidence": "Implementation checks reported passing; math correct; security 4/4."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "3/3 test sections evidenced"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 4,
+          "evidence": "210 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 3.5,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.5,
+          "evidence": "All three sections returned evidence in one run"
+        },
+        "Instruction Following": {
+          "score": 5,
+          "evidence": "All five exact markers retained and math supplied"
+        },
+        "Reasoning Quality": {
+          "score": 4.5,
+          "evidence": "Discount/tax math and security reasoning checked"
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "4/4 requested vulnerability classes mentioned with fixes"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "3/3 sections evidenced"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 5,
+          "evidence": "No observed factual error; higher score means fewer hallucinations"
+        },
+        "Consistency": {
+          "score": 4.5,
+          "evidence": "No contradiction observed in completed sections"
+        }
+      },
+      "summary": "Implementation checks passed; math correct; security review covered 4/4 required risk classes.",
+      "strengths": [
+        "Multiple implementation checks passed",
+        "Correct $64.80 discount and tax result",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Error recovery was not directly exercised"
+      ],
+      "bestFor": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "categories": [
+        "Coding",
+        "Mathematics",
+        "Security"
+      ],
+      "areaScores": {
+        "Coding": 4.9,
+        "Debugging": 4,
+        "Code review": 4.75,
+        "Refactoring": 4.8,
+        "Mathematics": 5,
+        "Instruction following": 5,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 4.5
+      },
+      "availabilityNote": "",
+      "runSeconds": 209.886,
+      "responseChars": 3693
+    },
+    {
+      "id": "openrouter/cohere/north-mini-code:free",
+      "name": "North Mini Code (free)",
+      "provider": "OpenCode",
+      "status": "success",
+      "latencyMs": 171213,
+      "overall": 3.9,
+      "scores": {
+        "Accuracy": {
+          "score": 3.2,
+          "evidence": "7/7 implementation checks and security review; requested final price was omitted."
+        },
+        "Task Completion": {
+          "score": 5,
+          "evidence": "All three test sections returned; the math answer is scored separately"
+        },
+        "Code Quality": {
+          "score": 4.8,
+          "evidence": "Dependency-free implementation with input checks; overflow handling evidenced when noted."
+        },
+        "Speed": {
+          "score": 4,
+          "evidence": "171 seconds end-to-end delegated run"
+        },
+        "Token Efficiency": {
+          "score": 4,
+          "evidence": "Response-length proxy only; model token counts were not exposed"
+        },
+        "Reliability": {
+          "score": 4.2,
+          "evidence": "Completed all sections in one attempt; single run"
+        },
+        "Instruction Following": {
+          "score": 3,
+          "evidence": "Five required labels were present, but the MATH line did not give the final price."
+        },
+        "Reasoning Quality": {
+          "score": 3,
+          "evidence": "Math answer was not provided; security review was sound."
+        },
+        "Tool Efficiency": {
+          "score": 4.5,
+          "evidence": "Ran Node assertions and shell status check"
+        },
+        "Error Recovery": {
+          "score": 3.2,
+          "evidence": "No external failure injected; recovery not directly exercised"
+        },
+        "Security": {
+          "score": 4.5,
+          "evidence": "Four requested risks identified with mitigations"
+        },
+        "Completeness": {
+          "score": 5,
+          "evidence": "All three requested test sections returned"
+        },
+        "Independence": {
+          "score": 5,
+          "evidence": "Worked without parent assistance and kept code in /tmp"
+        },
+        "Context Retention": {
+          "score": 4.5,
+          "evidence": "Marker and section requirements retained across the multi-part prompt"
+        },
+        "Hallucination Rate": {
+          "score": 2,
+          "evidence": "Required numeric answer was missing, so accuracy could not be confirmed."
+        },
+        "Consistency": {
+          "score": 3,
+          "evidence": "No contradiction observed; math response incomplete."
+        }
+      },
+      "summary": "7/7 implementation checks; completed the security review but did not state a numeric final price.",
+      "strengths": [
+        "7 implementation checks passed",
+        "Identified all four security risks and fixes",
+        "Recorded repository status with shell"
+      ],
+      "limitations": [
+        "Did not give the requested numeric final price.",
+        "Error recovery was not directly exercised."
+      ],
+      "bestFor": [
+        "Coding",
+        "Security",
+        "Tool use"
+      ],
+      "categories": [
+        "Coding",
+        "Security",
+        "Tool use"
+      ],
+      "areaScores": {
+        "Coding": 4,
+        "Debugging": 4,
+        "Code review": 3.85,
+        "Refactoring": 4.8,
+        "Mathematics": 1,
+        "Instruction following": 3,
+        "Tool use": 4.5,
+        "Security": 4.5,
+        "Reasoning & logic": 3
+      },
+      "availabilityNote": "",
+      "runSeconds": 171.213,
+      "responseChars": 1671
+    },
+    {
+      "id": "openrouter/xingchen-agi/xing4.0-29b-a4b:free",
+      "name": "Xing4.0 29B A4B (free)",
+      "provider": "OpenCode",
+      "status": "failed",
+      "latencyMs": null,
+      "overall": null,
+      "scores": {},
+      "summary": "Upstream model endpoint was rate-limited; no benchmark answer was returned.",
+      "strengths": [],
+      "limitations": [
+        "No answer-quality score; the task battery did not run.",
+        "[Phala] xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations"
+      ],
+      "bestFor": [],
+      "availabilityNote": "[Phala] xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+      "categories": [],
+      "areaScores": {}
+    }
+  ]
+}
