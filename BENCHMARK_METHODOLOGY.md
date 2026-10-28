@@ -31,4 +31,4 @@ The dashboard stores only short evaluation summaries, evidence, scores, and prov
 
 ## Supabase load
 
-Apply `supabase/migrations/20261026_000004_benchmark_scorecards.sql` first, then run `supabase/seed_opencode_free_20261026.sql` in the authenticated Supabase SQL Editor. The seed is idempotent and publishes the benchmark rows so the read-only dashboard can display them. The browser app uses only its publishable key and cannot write to Supabase.
+Apply `supabase/migrations/20261026000004_benchmark_scorecards.sql` first, then run `supabase/seed_opencode_free_20261026.sql` in the authenticated Supabase SQL Editor. The seed is idempotent and publishes the benchmark rows so the read-only dashboard can display them. The browser app uses only its publishable key and cannot write to Supabase.

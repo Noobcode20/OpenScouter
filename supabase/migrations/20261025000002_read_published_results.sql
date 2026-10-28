@@ -1,7 +1,11 @@
 alter table public.test_sessions
   add column if not exists is_published boolean not null default false;
 
-grant select on table public.test_sessions, public.model_results to anon;
+revoke all on table public.test_sessions, public.model_results from anon;
+grant select (id, label, task, created_at, is_published)
+  on table public.test_sessions to anon;
+grant select (id, session_id, model_id, model_name, provider, status, latency_ms, created_at)
+  on table public.model_results to anon;
 revoke insert, update, delete on table public.test_sessions, public.model_results from anon;
 
 drop policy if exists "Users manage their test sessions" on public.test_sessions;

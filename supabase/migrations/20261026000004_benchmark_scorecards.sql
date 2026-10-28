@@ -28,3 +28,7 @@ alter table public.model_results
 
 create unique index if not exists model_results_session_model_uidx
   on public.model_results (session_id, model_id);
+
+grant select (benchmark_version) on public.test_sessions to anon;
+grant select (scorecard_json, summary, strengths, limitations, best_for, availability_note)
+  on public.model_results to anon;

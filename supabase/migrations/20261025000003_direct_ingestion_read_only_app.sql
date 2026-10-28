@@ -18,12 +18,13 @@ drop policy if exists "Owners can create results for unpublished sessions" on pu
 drop policy if exists "Owners can update results in unpublished sessions" on public.model_results;
 drop policy if exists "Owners can delete results in unpublished sessions" on public.model_results;
 
-drop schema if exists private cascade;
-
 alter table public.test_sessions alter column owner_id drop not null;
 alter table public.model_results alter column owner_id drop not null;
 
 revoke all on table public.saved_prompts, public.test_sessions, public.model_results, public.model_ratings from anon, authenticated;
-grant select on table public.test_sessions, public.model_results to anon;
+grant select (id, label, task, created_at, is_published)
+  on table public.test_sessions to anon;
+grant select (id, session_id, model_id, model_name, provider, status, latency_ms, created_at)
+  on table public.model_results to anon;
 
 -- Preserve the published-only anon SELECT policies created by migration 000002.

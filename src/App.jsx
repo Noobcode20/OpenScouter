@@ -95,6 +95,7 @@ function App() {
   const [selectedId, setSelectedId] = useState(initialModels[0]?.id || '');
   const [source, setSource] = useState('local');
   const [loading, setLoading] = useState(false);
+  const [syncMessage, setSyncMessage] = useState('');
   const [activePage, setActivePage] = useState('benchmark');
   const [modelMode, setModelMode] = useState('auto');
   const [promptTemplate, setPromptTemplate] = useState(defaultPromptTemplate);
@@ -129,37 +130,64 @@ function App() {
     let active = true;
     async function loadLatest() {
       setLoading(true);
-      const { data: sessions, error: sessionError } = await supabase
-        .from('test_sessions').select('id, label, task, created_at, benchmark_version')
-        .eq('is_published', true).order('created_at', { ascending: false }).limit(12);
-      if (!active || sessionError || !sessions?.length) { if (active) setLoading(false); return; }
-      const { data: results, error } = await supabase.from('model_results')
-        .select('id, session_id, model_id, model_name, provider, status, latency_ms, scorecard_json, summary, strengths, limitations, best_for, availability_note')
-        .in('session_id', sessions.map(session => session.id)).order('created_at', { ascending: true });
-      if (!active) return;
-      if (!error && results?.length) {
-        const latestSession = sessions[0];
-        const rows = results.filter(row => row.session_id === latestSession.id).map(row => {
-          const scores = row.scorecard_json || {};
-          const scoreValues = metrics.map(metric => Number(scores[metric]?.score ?? scores[metric])).filter(Number.isFinite);
-          return {
-            id: row.model_id,
-            name: row.model_name,
-            provider: row.provider,
-            status: row.status === 'error' ? 'failed' : row.status,
-            latencyMs: row.latency_ms,
-            scores,
-            overall: scoreValues.length ? scoreValues.reduce((sum, score) => sum + score, 0) / scoreValues.length : undefined,
-            summary: row.summary || '',
-            strengths: row.strengths || [],
-            limitations: row.limitations || [],
-            bestFor: row.best_for || [],
-            availabilityNote: row.availability_note || '',
-          };
-        });
-        if (rows.length) { setModels(rows); setSelectedId(rows[0].id); setSource('supabase'); }
+      try {
+        const { data: sessions, error: sessionError } = await supabase
+          .from('test_sessions').select('id, label, task, created_at, benchmark_version')
+          .eq('is_published', true).order('created_at', { ascending: false }).limit(12);
+        if (!active) return;
+        if (sessionError) {
+          setSyncMessage('Supabase sync failed; showing bundled benchmark results.');
+          setLoading(false);
+          return;
+        }
+        if (!sessions?.length) {
+          setSyncMessage('No published Supabase results; showing bundled benchmark results.');
+          setLoading(false);
+          return;
+        }
+        const { data: results, error } = await supabase.from('model_results')
+          .select('id, session_id, model_id, model_name, provider, status, latency_ms, scorecard_json, summary, strengths, limitations, best_for, availability_note')
+          .in('session_id', sessions.map(session => session.id)).order('created_at', { ascending: true });
+        if (!active) return;
+        if (error) {
+          setSyncMessage('Supabase sync failed; showing bundled benchmark results.');
+          setLoading(false);
+          return;
+        }
+        if (results?.length) {
+          const latestSession = sessions[0];
+          const rows = results.filter(row => row.session_id === latestSession.id).map(row => {
+            const scores = row.scorecard_json || {};
+            const scoreValues = metrics.map(metric => Number(scores[metric]?.score ?? scores[metric])).filter(Number.isFinite);
+            return {
+              id: row.model_id,
+              name: row.model_name,
+              provider: row.provider,
+              status: row.status === 'error' ? 'failed' : row.status,
+              latencyMs: row.latency_ms,
+              scores,
+              overall: scoreValues.length ? scoreValues.reduce((sum, score) => sum + score, 0) / scoreValues.length : undefined,
+              summary: row.summary || '',
+              strengths: row.strengths || [],
+              limitations: row.limitations || [],
+              bestFor: row.best_for || [],
+              categories: row.best_for || [],
+              areaScores: {},
+              availabilityNote: row.availability_note || '',
+            };
+          });
+          if (rows.length) { setModels(rows); setSelectedId(rows[0].id); setSource('supabase'); setSyncMessage(''); }
+          else setSyncMessage('The latest Supabase session has no results; showing bundled benchmark results.');
+        } else {
+          setSyncMessage('The latest Supabase session has no results; showing bundled benchmark results.');
+        }
+        setLoading(false);
+      } catch {
+        if (active) {
+          setSyncMessage('Supabase sync failed; showing bundled benchmark results.');
+          setLoading(false);
+        }
       }
-      setLoading(false);
     }
     loadLatest();
     return () => { active = false; };
@@ -170,7 +198,7 @@ function App() {
     const matchesSearch = text.includes(search.trim().toLowerCase());
     const matchesCategory = category === 'All areas' || (model.bestFor || []).some(item => item.toLowerCase() === category.toLowerCase()) || (model.categories || []).some(item => item.toLowerCase() === category.toLowerCase());
     return matchesSearch && matchesCategory;
-  }).sort((a, b) => sort === 'speed' ? (a.latencyMs ?? Infinity) - (b.latencyMs ?? Infinity) : sort === 'completion' ? (b.scores?.['Task Completion'] ?? -1) - (a.scores?.['Task Completion'] ?? -1) : (b.overall ?? 0) - (a.overall ?? 0)), [models, category, search, sort]);
+  }).sort((a, b) => sort === 'speed' ? (a.latencyMs ?? Infinity) - (b.latencyMs ?? Infinity) : sort === 'completion' ? (Number(b.scores?.['Task Completion']?.score ?? b.scores?.['Task Completion'] ?? -1)) - (Number(a.scores?.['Task Completion']?.score ?? a.scores?.['Task Completion'] ?? -1)) : (b.overall ?? 0) - (a.overall ?? 0)), [models, category, search, sort]);
   const pageCount = Math.ceil(visible.length / MODELS_PER_PAGE);
   const currentModelPage = Math.min(modelPage, Math.max(pageCount, 1));
   const pageModels = visible.slice((currentModelPage - 1) * MODELS_PER_PAGE, currentModelPage * MODELS_PER_PAGE);
@@ -329,7 +357,7 @@ function App() {
       <div className="sidebar-bottom scout-side-note">Each model received the same three-part task. Provider errors are kept separate from answer quality.</div>
     </aside>
     <main className="scout-main" id="top">
-      <header className="topbar"><div className="breadcrumb">OpenScouter <span>/</span> <b>{activePage === 'prompt' ? 'Prompt builder' : 'Free model benchmark'}</b></div><div className="top-actions"><span className="snapshot"><span className="live-dot" /> {loading ? 'Syncing results' : source === 'supabase' ? 'Supabase results' : 'Local benchmark results'}</span></div></header>
+      <header className="topbar"><div className="breadcrumb">OpenScouter <span>/</span> <b>{activePage === 'prompt' ? 'Prompt builder' : 'Free model benchmark'}</b></div><div className="top-actions"><span className="snapshot" title={syncMessage || undefined}><span className="live-dot" /> {loading ? 'Syncing results' : source === 'supabase' ? 'Supabase results' : syncMessage || 'Local benchmark results'}</span></div></header>
       {activePage === 'prompt' ? <section className="prompt-page">
         <div className="prompt-page-heading"><div><div className="section-kicker">PROMPT WORKSPACE</div><h1>Build a supervisor prompt</h1><p>Use benchmark recommendations automatically or choose the models yourself.</p></div></div>
         <div className="prompt-page-grid">
